@@ -11,7 +11,6 @@ return array(
         'invokables' => array(
             'SanAuth\Controller\Auth' => 'SanAuth\Controller\AuthController',
             'SanAuth\Controller\Success' => 'SanAuth\Controller\SuccessController',
-            //'SanAuth\Controller\SignIn' => 'SanAuth\Controller\SignInController'
             //Ajouter controller et action ici
         ),
     ),

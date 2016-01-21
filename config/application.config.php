@@ -12,6 +12,8 @@ return array(
         'Application',
         'Album',
         'SanAuth',
+        'Book',
+        'Movie'
     ),
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(

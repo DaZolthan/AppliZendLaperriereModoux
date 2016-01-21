@@ -89,7 +89,8 @@ class AuthController extends AbstractActionController {
                         //set storage again 
                         $this->getAuthService()->setStorage($this->getSessionStorage());
                     }
-                    $this->getAuthService()->getStorage()->write($request->getPost('username'));
+                    $user = $this->getAuthService()->getAdapter()->getResultRowObject();
+                    $this->getAuthService()->getStorage()->write($user);
                 }
             }
         }

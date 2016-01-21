@@ -23,6 +23,15 @@ namespace Album\Model;
          $resultSet = $this->tableGateway->select();
          return $resultSet;
      }
+     
+     public function findAlbumByIdUser($userId)
+     {
+         $resultSet = $this->tableGateway->select(['users_id' => $userId]);
+         if(!$resultSet) {
+             throw new \Exception("Could not find album from $id");
+         }
+         return $resultSet;
+     }
 
      public function getAlbum($id)
      {

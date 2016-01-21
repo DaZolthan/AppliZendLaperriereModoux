@@ -10,10 +10,12 @@ use Album\Form\AlbumForm;
 class AlbumController extends AbstractActionController {
 
     protected $albumTable;
+    protected $authservice;
 
     public function indexAction() {
+        $user = $this->getAuthService()->getStorage()->read();
         return new ViewModel(array(
-            'albums' => $this->getAlbumTable()->fetchAll(),
+            'albums' => $this->getAlbumTable()->findAlbumByIdUser($user->id),
         ));
     }
 
@@ -111,6 +113,15 @@ class AlbumController extends AbstractActionController {
             $this->albumTable = $sm->get('Album\Model\AlbumTable');
         }
         return $this->albumTable;
+    }
+    
+    public function getAuthService() {
+        if (!$this->authservice) {
+            $this->authservice = $this->getServiceLocator()
+                    ->get('AuthService');
+        }
+
+        return $this->authservice;
     }
 
 }
